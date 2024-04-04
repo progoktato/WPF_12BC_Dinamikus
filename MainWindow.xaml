@@ -7,6 +7,48 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Margin="10" Grid.RowSpan="2" VerticalAlignment="Center">
+            <TextBox x:Name="txtNev"/>
+            <RadioButton x:Name="rdoButton" Content="Button" IsChecked="True"/>
+            <RadioButton x:Name="rdoTextBlock" Content="TextBlock"/>
+            <Button x:Name="btnFelveszWrap" Content="Felvesz WrapPanelbe" Click="btnFelveszWrap_Click"/>
+            <Separator Margin="0 20"/>
 
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Oszlopok száma:"/>
+                <Label Content="{Binding ElementName=sliOszlop, Path=Value}" Foreground="Red"/>
+            </StackPanel>
+            <Slider x:Name="sliOszlop" Minimum="1" Maximum="10" Value="5"
+                    IsSnapToTickEnabled="True" />
+            
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Sorok száma:"/>
+                <Label Content="{Binding ElementName=sliSor, Path=Value}" Foreground="Red"/>
+            </StackPanel>
+            <Slider x:Name="sliSor" Minimum="1" Maximum="10" Value="5"
+                    IsSnapToTickEnabled="True"/>
+            
+            <Button x:Name="btnLetrehozGrid" Content="Grid létrehozása" Click="btnLetrehozGrid_Click"/>
+
+            <Label Content="Melyik oszlopba (1..■) :"/>
+            <TextBox x:Name="txtOszlop" Text="1"/>
+            <Label Content="Melyik sorba (1..■) :"/>
+            <TextBox x:Name="txtSor" Text="1"/>
+            <Button x:Name="btnFelveszGrid" Content="Felvesz Grid-be" Click="btnFelveszGrid_Click"/>
+        </StackPanel>
+
+        <WrapPanel x:Name="wpPanel" Grid.Column="1" Background="LightGreen"/>
+        <Grid x:Name="grdPanel" Grid.Column="1" Grid.Row="1" Background="LightSkyBlue"
+              ShowGridLines="True">
+        </Grid>
     </Grid>
 </Window>
